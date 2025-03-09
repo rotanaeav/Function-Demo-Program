@@ -23,6 +23,14 @@ void printMenu()
     cout << "3. Sum/Mul of 1...n" << endl;
     cout << "4. Exit" << endl;
 }
+
+void entertoex()
+{
+    cout << "---- Press Enter to exit -----" << endl;
+    cin.ignore();
+    cin.get();
+}
+
 float exchangeUSDKHR(bool isUSDtoKHR)
 {
     float amount;
@@ -38,12 +46,6 @@ float exchangeUSDKHR(bool isUSDtoKHR)
     {
         return amount / 4000;
     }
-}
-void pressEntertoContinue()
-{
-    cout << "---- Press Enter to exit -----" << endl;
-    cin.ignore();
-    cin.get();
 }
 
 void moneyExProgram()
@@ -73,10 +75,10 @@ void moneyExProgram()
             else if (opt == 3)
             {
                 cout << "Exit" << endl;
-                pressEntertoContinue();
+                entertoex();
                 break;
             }
-            pressEntertoContinue();
+            entertoex();
         }
     }
 }
@@ -96,7 +98,7 @@ double salaryCalculate(float hours, float wage, char gender)
         salary *= 0.9;
     return salary;
 }
-void calculateWorkSalary()
+void workerSalaryProgram()
 {
     string name, position;
     char gender;
@@ -123,13 +125,15 @@ void calculateWorkSalary()
         cout << "Hours is : " << hours << "hrs" << endl;
         cout << "Salary is : " << salaryCalculate(hours, wage, gender) << "$" << endl;
         cout << endl;
-        cout << "<--------- Enter Q or q to exit or Enter to Continue ------------->" << endl;
-        // exit button
+        cout << "Press Enter to continue or Q to quit: ";
+        // exit-button
         cin.ignore();
-
         char quit = cin.get();
         if (quit == 'q' || quit == 'Q')
+        {
+            cout << "Exit" << endl;
             break;
+        }
     }
 }
 void sumMul()
@@ -155,7 +159,7 @@ void sumMul()
     {
         cout << "Please enter non-negative numbers." << endl;
     }
-    pressEntertoContinue();
+    entertoex();
 }
 int main()
 {
@@ -173,7 +177,7 @@ int main()
             moneyExProgram();
             break;
         case 2:
-            calculateWorkSalary();
+            workerSalaryProgram();
             break;
         case 3:
             sumMul();
